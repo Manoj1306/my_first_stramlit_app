@@ -19,9 +19,10 @@ fruits_to_show= my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 streamlit.header('Fruityvice Fruit Advice!')
 import requests
-fruitvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruitvice_response.json())
-  #fruitvice_normalized = pandas.json_normalize(fruitvice_response.json())
+fruitvice_response = requests.get("https://fruityvice.com/api/fruit/"+"Kiwi")
+#streamlit.text(fruitvice_response.json())
+fruitvice_normalized = pandas.json_normalize(fruitvice_response.json())
+streamlit.dataframe(fruitvice_normalized)
 
 import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
